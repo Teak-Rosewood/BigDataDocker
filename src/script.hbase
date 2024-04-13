@@ -1,0 +1,4 @@
+create 'users', 'info'
+put 'users', '1', 'info:name', 'John'
+put 'users', '1', 'info:age', '28'
+scan 'users'
