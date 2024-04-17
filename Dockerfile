@@ -14,7 +14,8 @@ RUN apt update
 RUN apt install -y software-properties-common
 RUN add-apt-repository ppa:maveonair/helix-editor
 RUN apt update && \
-    apt install -y ssh openjdk-8-jdk neovim helix junit python-is-python3 nano curl python3-pip
+    apt install -y ssh openjdk-8-jdk neovim helix junit python-is-python3 nano curl python3-pip && \
+    apt install python3-pylsp -y
 
 # Download and extract Hadoop
 RUN mkdir -p $HADOOP_HOME && \
@@ -129,7 +130,6 @@ RUN curl -s -o install.sh https://raw.githubusercontent.com/LunarVim/LunarVim/re
     LV_BRANCH='release-1.3/neovim-0.9' bash install.sh
 
 # Download LSP for Python, Scala
-RUN apt install python3-pylsp -y
 RUN curl -fL "https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz" | gzip -d > cs && \
     chmod +x cs && \
     ./cs setup -y && \
